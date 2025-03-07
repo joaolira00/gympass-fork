@@ -2,7 +2,7 @@ import { prisma } from '@/lib/prisma'
 import type { Gym, Prisma } from '@prisma/client'
 import type {
   GymsRepository,
-  findManyNearbyParams,
+  FindManyNearbyParams,
 } from '../utils/gyms-repository'
 
 export class PrismaGymsRepository implements GymsRepository {
@@ -32,7 +32,7 @@ export class PrismaGymsRepository implements GymsRepository {
     return gyms
   }
 
-  async findManyNearby({ latitude, longitude }: findManyNearbyParams) {
+  async findManyNearby({ latitude, longitude }: FindManyNearbyParams) {
     // Math function to calculate distance
     const gyms = await prisma.$queryRaw<Gym[]>`
     SELECT * FROM gyms
